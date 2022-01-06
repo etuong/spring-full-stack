@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <span class="breadcrumb-item active">Order Confirmation</span>
+    </div>
+</div>
+
+<section class="static">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success">
+                    <h3><i class="fa fa-check" aria-hidden="true" style="color: limegreen;"></i>
+                        Your order has been placed!</h3>
+                    <h6>The estimated delivery date is <span th:text="${estimatedDeliveryDate}"></span></h6>
+                    <h6>An email confirmation has been sent to <span th:text="${emailAddress}"/></h6><br />
+                    <a class="btn btn-warning" th:href="@{/generatePDF}">Generate PDF</a>
+                </div>
+
+                <h4>List of Items</h4>
+                <div class="row" th:each="cartItem : ${cartItemList}" style="margin:10px 0px;">
+                    <hr/>
+                    <div class="col-2"></div>
+                    <div class="col-2">
+                        <a th:href="@{book(id=${cartItem.book.id})}">
+                            <img class="img-fluid shelf" th:src="@{/images/book}+${cartItem.book.id}+'.jpg'"
+                                 style="width: 70px;"/>
+                        </a>
+                    </div>
+                    <div class="form-group col-6">
+                        <div style="margin-left: 50px;">
+                            <a th:href="@{book(id=${cartItem.book.id})}"><h4 th:text="${cartItem.book.title}"></h4></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-2">
+                        <h5 style="color: #db3208; font-size: large;">$
+                            <span th:text="${cartItem.book.ourPrice}"/>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+</body>
+
+</html>

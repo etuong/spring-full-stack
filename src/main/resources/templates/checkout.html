@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <a class="breadcrumb-item" th:href="@{/shoppingCart}">Shopping Cart</a>
+        <span class="breadcrumb-item active">Checkout</span>
+    </div>
+</div>
+
+<section class="static about-sec">
+    <div class="container">
+        <form th:action="@{/checkout}" method="post" onsubmit="return validatePaymentForm()">
+
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <div class="card" style="min-height: 310px">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-warning btn-block">Place Your Order</button>
+                            <p style="font-size: smaller; line-height:normal; margin-top:5px;">By placing your order,
+                                you agree to BookSmart's
+                                <a th:href="@{/termsConditions}">terms and conditions</a></p>
+                            <hr/>
+                            <h3>Order Summary</h3>
+                            <div class="row">
+                                <div class="col-7 text-left">
+                                    Total before tax:
+                                </div>
+                                <div class="col-5 text-right">
+                                    $<span th:text="${shoppingCart.grandTotal}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7 text-left">
+                                    Estimated tax:
+                                </div>
+                                <div class="col-5 text-right">
+                                    $<span th:with="total=${shoppingCart.grandTotal*0.075}"
+                                           th:text="${#numbers.formatDecimal(total, 0, 2)}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7 text-left">
+                                    <h3 style="color: darkred;"><strong>Order Total: </strong></h3>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <h3><strong style="color: darkred;">$<span
+                                            th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.075}"
+                                            th:text="${#numbers.formatDecimal(total, 0, 2)}"></span></strong></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-8">
+                    <div class="card" style="min-height: 310px">
+                        <div class="card-header">
+                            <h5 class="card-title">Credit Card Information</h5>
+                        </div>
+                        <div class="card-body" style="background: aliceblue;">
+                            <div class="payment">
+                                <div class="one">Credit Card Type</div>
+                                <div class="two">
+                                    <label>
+                                        <input type="radio" id="discover" name="cardType" required/>Discover
+                                    </label>
+                                    <label style="margin:0px 10px;">
+                                        <input type="radio" id="master" name="cardType"/>Mastercard
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="visa" name="cardType"/>VISA
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="payment">
+                                <div class="one">Credit Card Number</div>
+                                <div class="two">
+                                    <input type=text inputmode="numeric" pattern="[0-9\s]{13,19}"
+                                           maxlength="19" placeholder="xxxx xxxx xxxx xxxx" id="number"
+                                           required/>
+                                </div>
+                            </div>
+                            <div class="payment">
+                                <div class="one">Expiration Date</div>
+                                <div class="two">
+                                    <input type="month" id="expiration" required/>
+                                </div>
+                            </div>
+                            <div id="errorMessages"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+</body>
+
+</html>

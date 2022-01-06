@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <span class="breadcrumb-item active">Terms and Conditions</span>
+    </div>
+</div>
+
+<section class="static about-sec">
+    <div class="container">
+        <h1>Terms and Conditions</h1>
+
+        <p>The following texts are obtained from https://www.printbookstore.com/terms_and_conditions</p>
+
+        <h3>License </h3>
+        <p>Your use of this website is under a limited license to access and make personal use of this website. This
+            license does not include the right to download (except for page caching), modify, reproduce, or resell any
+            part of the website's content; use any robot, spider, data miner, or other means to extract and gather data
+            from the website; or otherwise use this website or any of its content in any manner other than the manner in
+            which it is intended to be used, unless you first obtain BookSmart express written consent./p>
+        <h3>Product Descriptions </h3>
+        <p>BookSmart attempts to make its product descriptions as accurate as possible. However, BookSmart does not
+            warrant that the descriptions or other content on this website are accurate,
+            reliable, complete, or current. If you receive an item from BookSmart that is not as it was
+            described on the website, your sole remedy is to return it unused for a refund.</p>
+        <h3>Privacy</h3>
+        <p>Please review the BookSmart privacy notice to develop an understanding of BookSmart
+            practices with respect to this important issue. BookSmart privacy notice is part of these Terms
+            of Use and its provisions are incorporated herein by this reference. This website is hosted and operated in
+            the United States, and is not intended to target EU and other non-U.S. residents. If you are accessing this
+            site from outside the United States, use and disclosure laws will generally differ considerably from U.S.
+            laws and requirements. By using this site, you agree and consent to use of your information under these
+            Terms of Use and BookSmart privacy notice.</p>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+</body>
+
+</html>

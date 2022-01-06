@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <a class="breadcrumb-item" th:href="@{/shop}">Shop</a>
+        <span class="breadcrumb-item active">Product</span>
+    </div>
+</div>
+
+<section class="product-sec">
+    <div class="container">
+        <h3 th:text="${book.title}"></h3><br/>
+
+        <div class="row">
+            <div class="col-md-6 slider-sec">
+                <!-- main slider carousel -->
+                <div id="myCarousel" class="carousel slide">
+                    <!-- main slider carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item carousel-item" data-slide-number="0">
+                            <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img1">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="1">
+                            <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img2">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="2">
+                            <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img3">
+                        </div>
+                    </div>
+                    <!-- main slider carousel nav controls -->
+                    <ul class="carousel-indicators list-inline">
+                        <li class="list-inline-item active">
+                            <a id="carousel-selector-0" class="selected" data-slide-to="0"
+                               data-target="#myCarousel">
+                                <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img1">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
+                                <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img2">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
+                                <img th:src="@{/images/book}+${book.id}+'.jpg'" class="img-fluid" alt="img3">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/main slider carousel-->
+            </div>
+            <div class="col-md-6 slider-content">
+                <form th:action="@{shoppingCart/addItem}" method="post">
+                    <p th:text="${book.description}"></p>
+
+                    <ul>
+                        <li>
+                            <span class="name">Author</span><span class="clm">:</span>
+                            <span th:text="${book.author}"/>
+                        </li>
+                        <li>
+                            <span class="name">Publisher</span><span class="clm">:</span>
+                            <span th:text="${book.publisher}"/>
+                        </li>
+                        <li>
+                            <span class="name">ISBN13</span><span class="clm">:</span>
+                            <span th:text="${book.isbn}"/>
+                        </li>
+                        <li>
+                            <span class="name">List Price</span><span class="clm">:</span>
+                            <span class="price">$<span th:text="${book.listPrice}"/></span>
+                        </li>
+                        <li>
+                            <span class="name">Our Price</span><span class="clm">:</span>
+                            <span class="price final">$<span th:text="${book.ourPrice}"/>
+                        <span class="save-cost" style="float:left">Save $<div
+                                th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT')}"/>
+                        </span>
+                        </span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="name">Quantity</span><span class="clm">:</span>
+                            <select name="quantity">
+                                <option th:each="qty: ${qtyList}" th:value="${qty}" th:text="${qty}"></option>
+                            </select>
+                        </li>
+                    </ul>
+                    <input hidden="hidden" th:field="*{book.id}"/>
+                    <div class="btn-sec" sec:authorize="isAuthenticated()">
+                        <button class="btn">Add To cart</button>
+                    </div>
+                    <p sec:authorize="isAnonymous()" style="color:red">* Please log in first in order to add item to
+                        your cart!</p>
+                    <p th:if="${addBookSuccess}" style="color:red">* Book is successfully added to your cart!</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+
+</html>

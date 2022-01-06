@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+        table {
+            border-clllapse: collapse;
+        }
+        table, th, th {
+            border: 1px solid black;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<p>Dear <span th:text="${user.username}"/>,</p>
+<p>Thank you for shopping at BookSmart. We hope you had a good time with our service!</p>
+<p>Your order number is: <strong>#<span th:text="${order.id}"></span></strong>. Here is your order detail:</p>
+<hr/>
+
+<h3><strong>Order Summary</strong></h3>
+<table>
+    <thead>
+    <tr>
+        <td width="200"><strong>Item Name</strong></td>
+        <td width="150"><strong>Item Price</strong></td>
+        <td width="150"><strong>Item Quantity</strong></td>
+        <td width="150"><strong>Total</strong></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cartItem : ${cartItemList}">
+        <td data-th-text="${cartItem.book.title}"/>
+        <td data-th-text="${cartItem.book.ourPrice}"/>
+        <td data-th-text="${cartItem.quantity}"/>
+        <td data-th-text="${cartItem.subtotal}"/>
+    </tr>
+    <tr>
+        <td/>
+        <td/>
+        <td><strong>Subtotal</strong></td>
+        <td data-th-text="${order.orderTotal}"/>
+    </tr>
+    <tr>
+        <td/>
+        <td/>
+        <td><strong>Tax</strong></td>
+        <td class="emptyrow text-right" data-th-text="${#numbers.formatDecimal(order.orderTotal*0.075, 0, 2)}"/>
+    </tr>
+    <tr>
+        <td><i class="fa fa-barcode iconbig"></i></td>
+        <td/>
+        <td><strong>Total</strong></td>
+        <td th:with="total=${order.orderTotal+order.orderTotal*0.075}"
+            data-th-text="${#numbers.formatDecimal(total, 0, 2)}"/>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<p>Best,</p>
+<p>BookSmart</p>
+<p>Since 2020</p>
+</body>
+</html>

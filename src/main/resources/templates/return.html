@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <span class="breadcrumb-item active">Shipping & Returns</span>
+    </div>
+</div>
+
+<section class="static about-sec">
+    <div class="container">
+        <h1>RETURN POLICY</h1>
+        <strong>How do I return items?</strong>
+        <p>BookSmart accepts returns of unworn, unwashed, undamaged and/or defective merchandise for a full refund
+            within 30 days
+            of purchase. Refunds will be made in the form of the original payment. All returned items must be
+            accompanied by a return form.</p>
+        <strong>What are the delivery charges?</strong>
+        <p>BookSmart charges $5 and $10 for all domestic and international shipping, respectively.</p>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+</body>
+
+</html>

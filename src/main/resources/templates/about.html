@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <span class="breadcrumb-item active">About</span>
+    </div>
+</div>
+
+<section class="static about-sec">
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="img-sec">
+            <img src="images/about.jpg" alt="about" style="margin: 0 50px 50px 0; width: auto">
+            <p>BookSmart is an online bookstore with a mission to financially support local, independent bookstores. We
+                believe that bookstores are essential to a healthy culture. They’re where authors can connect with
+                readers, where we discover new writers, where children get hooked on the thrill of reading that can last
+                a lifetime.</p>
+            <p>If you are an author, a website or magazine, have a bookclub, an organization that wants to recommend
+                books, or even just a book-lover with an Instagram feed, you can sign up to be an affiliate, start your
+                own shop, and be rewarded for your advocacy of books. Bookshop wants to give back to everyone who
+                promotes books, authors, and independent bookstores!</p>
+        </div>
+        <p>By design, we give away over 75% of our profit margin to stores, publications, authors and others who make up
+            the thriving, inspirational culture around books! BookSmart is your one way stop to show for books, the
+            smart way!</p>
+        <p>* Paragraphs above were taken from https://bookshop.org/pages/about</p>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+</body>
+
+</html>

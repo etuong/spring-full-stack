@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<header th:replace="fragments :: navbar"/>
+
+<div class="breadcrumb">
+    <div class="container">
+        <a class="breadcrumb-item" th:href="@{/}">Home</a>
+        <span class="breadcrumb-item active">FAQ</span>
+    </div>
+</div>
+
+<section class="static about-sec">
+    <div class="container">
+        <h1>FAQ</h1>
+        <h3>Q: How do I place an order?</h3>
+        <p>A: First you need to set up an account, once that is created you are ready to place an order.</p>
+        <h3>Q: How do I set up an account?</h3>
+        <p>A: Click on the login button in the upper right hand corner.</p>
+        <h3>Q: How long does it take to process and ship orders?</h3>
+        <p>A: Please allow 1 - 3 business days (Monday-Friday) for order processing regardless of the shipping
+            method chosen. Once shipped you should receive your order within 2 - 10 business days. Please note that
+            2 day and Overnight services refer to business days (Monday - Friday).</p>
+        <h3>Q: Are all of the items guaranteed in stock?</h3>
+        <p>A: We try to update the website as often as possible to reflect out of stock conditions. However, the
+            ability to order an item does not guarantee that it will be in stock when your order is processed. You
+            will be notified if an order is not available.</p>
+        <h3>Q: How can I check the status of my order?</h3>
+        <p>A: You can contact us at 1.626.466.5656 with your name, order number, and a request for
+            status of your order. Our office hours are Monday - Friday 8am -4:30pm EST</p>
+        <h3>Q: How can I cancel or change my order?</h3>
+        <p>A: You can cancel your order or make a change to it by contacting us at 1.999.999.9999 as soon as
+            possible after your order is placed with your name, order number, and a request for cancellation or a
+            description of the requested change. Our office hours are Monday Friday 8am 4:30pm. We will do our best
+            to cancel or modify your order, but we will not be able to complete the cancellation if your order has
+            been processed or shipped.</p>
+        <h3>Q. What is your shipping method?</h3>
+        <p>A: We ship UPS, FedEx or US mail.</p>
+    </div>
+</section>
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+</body>
+
+</html>
