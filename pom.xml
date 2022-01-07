@@ -10,11 +10,10 @@
     </parent>
 
     <groupId>com.booksmart</groupId>
-    <artifactId>BookSmart</artifactId>
+    <artifactId>Meetup</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>BookSmart</name>
-    <description>JHU 605.681 e-Commerce Project</description>
+    <name>Meetup</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

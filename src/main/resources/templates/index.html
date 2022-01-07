@@ -1,195 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
 
 <head th:replace="fragments :: common-header"/>
 
 <body>
-<header th:replace="fragments :: navbar"/>
 
-<section class="slider">
-    <div class="container">
-        <div id="owl-demo" class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="slide">
-                    <img src="images/slide4.jpg" alt="slide4">
-                    <div class="content">
-                        <div class="title">
-                            <h3>Welcome To BookSmart</h3>
-                            <h5>Discover the best books online with us</h5>
-                            <a th:href="@{/shop}" class="btn">Shop Books</a>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <form action="/action_page.php">
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">First Name</label>
             </div>
-            <div class="item">
-                <div class="slide">
-                    <img src="images/slide2.jpg" alt="slide2">
-                    <div class="content">
-                        <div class="title">
-                            <h3>Welcome To BookSmart</h3>
-                            <h5>Discover the best books online with us</h5>
-                            <a th:href="@{/shop}" class="btn">Shop Books</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-75">
+                <input type="text" id="fname" name="firstname" placeholder="Your name..">
             </div>
-            <div class="item">
-                <div class="slide">
-                    <img src="images/slide1.jpg" alt="slide1">
-                    <div class="content">
-                        <div class="title">
-                            <h3>Welcome To BookSmart</h3>
-                            <h5>Discover the best books online with us</h5>
-                            <a th:href="@{/shop}" class="btn">Shop Books</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="about-sec">
-    <div class="about-img">
-        <figure style="background:url(./images/about.jpg)no-repeat;"></figure>
-    </div>
-    <div class="about-content">
-        <h2>About BookSmart</h2>
-        <p>BookSmart is an online bookstore with a mission to financially support local, independent bookstores.
-            We believe that bookstores are essential to a healthy culture. They’re where authors can connect with
-            readers, where we discover new writers, where children get hooked on the thrill of reading that can
-            last a lifetime. </p>
-        <p>If you are an author, a website or magazine, have a bookclub, an organization that wants to recommend books,
-            or even just a book-lover with an Instagram feed, you can sign up to be an affiliate, start your own shop,
-            and be rewarded for your advocacy of books. Bookshop wants to give back to everyone who promotes books,
-            authors, and independent bookstores!</p>
-        <p>By design, we give away over 75% of our profit margin to stores, publications, authors and others who
-            make up the thriving, inspirational culture around books! BookSmart is your one way stop to show
-            for books, the smart way!</p>
-        <p>* Paragraphs above were taken from https://bookshop.org/pages/about</p>
-    </div>
-</section>
-<section class="recent-book-sec">
-    <div class="container">
-        <div class="title">
-            <h2>Highly Recommended Books</h2>
-            <hr>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-4" th:each="book : ${books}">
-                <div class="item">
-                    <a th:href="@{/book?id=}+${book.id}">
-                        <img th:src="@{/images/book}+${book.id}+'.jpg'" alt="img">
-                        <h3><span th:text="${book.title}"></span></h3>
-                    </a>
-                    <h6><span class="price">$<span th:text="${book.ourPrice}"></span></span> /
-                        <a sec:authorize="isAuthenticated()" th:href="@{shoppingCart/addSingleItem?bookId=}+${book.id}">Add
-                            To Cart</a>
-                        <span sec:authorize="isAnonymous()">On Sale!</span></h6>
-                </div>
+            <div class="col-25">
+                <label for="lname">Last Name</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
             </div>
         </div>
-        <div class="btn-sec">
-            <a th:href="@{/shop}" class="btn gray-btn">View All Books</a>
-        </div>
-    </div>
-</section>
-<section class="features-sec">
-    <div class="container">
-        <ul>
-            <li>
-                <span class="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                <h3>SAFE SHOPPING</h3>
-                <h5>Safe Shopping Guarantee</h5>
-                <h6>We use standard asymmetric encryption so you rest assured that your credit card information is
-                    safe!</h6>
-            </li>
-            <li>
-                <span class="icon return"><i class="fa fa-reply-all" aria-hidden="true"></i></span>
-                <h3>30- DAY RETURN</h3>
-                <h5>Moneyback guarantee</h5>
-                <h6>If you are unhappy with your purchase, simply return for a full refund. No questions asked!</h6>
-            </li>
-            <li>
-                <span class="icon chat"><i class="fa fa-comments" aria-hidden="true"></i></span>
-                <h3>24/7 SUPPORT</h3>
-                <h5>Online Consultations</h5>
-                <h6>Our staff are available 24/7 to assist with any question or concern you may have!</h6>
-            </li>
-        </ul>
-    </div>
-</section>
-<section class="testimonial-sec">
-    <div class="container">
-        <div id="testimonal" class="owl-carousel owl-theme">
-            <div class="item">
-                <h3>Thanks to BookSmart, there is no reason to buy books on Amazon anymore.</h3>
-                <div class="box-user">
-                    <h4 class="author">Susane Mathew</h4>
-                    <span class="country">Australia</span>
-                </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="country">Country</label>
             </div>
-            <div class="item">
-                <h3>I ordered a student math textbook from them. The packaging was extremely secure. Book was in "New"
-                    condition exactly as described and was the exact one as listed. I was thoroughly satisfied with this
-                    transaction!</h3>
-                <div class="box-user">
-                    <h4 class="author">Nathan Lin</h4>
-                    <span class="country">Taiwan</span>
-                </div>
-            </div>
-            <div class="item">
-                <h3>The website has a good selection of books and gifts, and is a pleasure to browse</h3>
-                <div class="box-user">
-                    <h4 class="author">John Doe</h4>
-                    <span class="country">Canada</span>
-                </div>
-            </div>
-            <div class="item">
-                <h3>I have never experienced such a delighted customer service in my life. Thank you, BookSmart!</h3>
-                <div class="box-user">
-                    <h4 class="author">Jenny Penny</h4>
-                    <span class="country">America</span>
-                </div>
+            <div class="col-75">
+                <select id="country" name="country">
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                </select>
             </div>
         </div>
-    </div>
-    <div class="left-quote">
-        <img src="images/left-quote.png" alt="quote">
-    </div>
-    <div class="right-quote">
-        <img src="images/right-quote.png" alt="quote">
-    </div>
-</section>
+        <div class="row">
+            <div class="col-25">
+                <label for="subject">Subject</label>
+            </div>
+            <div class="col-75">
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
 
 <div th:replace="fragments :: footer"/>
 
 <div th:replace="fragments :: body-bottom-scripts"/>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script>
-$(document).ready(function () {
-  $("#owl-demo").owlCarousel({
-    navigation: true, // Show next and prev buttons
-    slideSpeed: 300,
-    paginationSpeed: 400,
-    singleItem: true,
-    items: 1,
-    autoPlay: 3000,
-    loop: true,
-  });
 
-  $("#testimonal").owlCarousel({
-    navigation: true, // Show next and prev buttons
-    slideSpeed: 300,
-    paginationSpeed: 400,
-    singleItem: true,
-    items: 1,
-    autoPlay: 3000,
-    loop: true,
-  });
-});
-
-
-</script>
 </body>
 
 </html>
