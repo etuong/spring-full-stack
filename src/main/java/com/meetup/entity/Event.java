@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -18,4 +19,8 @@ public class Event {
     private String title;
     @Column(columnDefinition = "text")
     private String description;
+    private String hostName;
+    private LocalDateTime dateTime;
+    private Byte[] image;
+    private String venue;
 }

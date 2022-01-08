@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="fragments :: common-header"/>
+
+<body>
+
+<div class="container">
+    <h2>Request for a new event</h2>
+    <form action="/action_page.php">
+
+        <div class="row">
+            <div class="col-1">
+                <label for="name">Host Full Name</label>
+            </div>
+            <div class="col-2">
+                <input type="text" id="name" name="name" placeholder="Your name..">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="title">Event Title</label>
+            </div>
+            <div class="col-2">
+                <input type="text" id="title" name="title" placeholder="Title of your event..">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="date">Event Date</label>
+            </div>
+            <div class="col-2">
+                <input type="date" id="date" name="date">
+                <input type="time" id="time" name="time">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="photo">Featured Photo</label>
+            </div>
+            <div class="col-2">
+                <input type="file" id="photo" name="photo" accept="image/*" onchange="loadFile(event)"> <br/>
+                <img id="display" width="200"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="description">Description</label>
+            </div>
+            <div class="col-2">
+                <textarea id="description" name="description" placeholder="Description of event.."
+                          style="height:200px"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                <label for="venue">Event Venue</label>
+            </div>
+            <div class="col-2">
+                <input type="text" id="venue" name="venue" placeholder="Venue for your event..">
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments :: body-bottom-scripts"/>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('display');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+</body>
+
+</html>
